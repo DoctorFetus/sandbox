@@ -1,0 +1,22 @@
+.switcher {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.bulb {
+    border: 1px black solid;
+    margin-left: 10px;
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    /*background: lightgreen;*/
+}
+
+.on {
+    background: lightgreen;
+}
+
+.off {
+    background: lightcoral;
+}
