@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {start} from "repl";
 
 
 export function UncontrolledRating() {
@@ -8,11 +9,11 @@ export function UncontrolledRating() {
 
     return (
         <div>
-            <Star handler={() => setValue(1)} selected={value >= 1}/>
-            <Star handler={() => setValue(2)} selected={value >= 2}/>
-            <Star handler={() => setValue(3)} selected={value >= 3}/>
-            <Star handler={() => setValue(4)} selected={value >= 4}/>
-            <Star handler={() => setValue(5)} selected={value >= 5}/>
+            <Star value={1} setValue={setValue} selected={value >= 1}/>
+            <Star value={2} setValue={setValue} selected={value >= 2}/>
+            <Star value={3} setValue={setValue} selected={value >= 3}/>
+            <Star value={4} setValue={setValue} selected={value >= 4}/>
+            <Star value={5} setValue={setValue} selected={value >= 5}/>
         </div>
     )
 
@@ -20,13 +21,13 @@ export function UncontrolledRating() {
 
 type StarPropsType = {
     selected: boolean
-    handler: () => void
+    setValue: (value: number) => void
+    value: 1 | 2 | 3 | 4 | 5
 
 }
 
 function Star(props: StarPropsType) {
-
-    const element = () => <span onClick={props.handler}>star </span>
-
-    return (props.selected) ? <b>{element()}</b> : element()
+    return <span onClick={() => props.setValue(props.value)}>
+        {props.selected ? <b>star </b> : "star "}
+    </span>
 }

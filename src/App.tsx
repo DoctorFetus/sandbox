@@ -1,38 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import {Accordion1, Accordion2} from "./components/Accordion/Accordion";
-import {Rating} from "./components/Rating/Rating";
-import OnOff from "./components/OnOff/OnOff";
-import OnOff2 from "./components/OnOff2/OnOff2";
-import UncontrolledAccordion from "./components/Accordion/UncontrolledAccordion";
-import {UncontrolledRating} from "./components/Rating/UncontrolledRating";
+import {Rating, RatingValueType} from "./components/Rating/Rating";
+import {Accordion} from "./components/Accordion/Accordion";
+import ControlledOnOff from "./components/OnOff/ControlledOnOff";
 
 
 function App() {
 
-
+    const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
+    const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
+    const [switcher, setSwitch] = useState<boolean>(false)
 
     return (
         <div>
-            {/*<Accordion1 titleValue={"My friend"} collapsed={false}/>*/}
-            {/*<Accordion2 titleValue={"Feedback"} collapsed={true}/>*/}
-            {/*<OnOff />*/}
-            {/*<OnOff2 />*/}
-            <UncontrolledAccordion titleValue={"Menu"}/>
-            <UncontrolledRating />
+            <Rating onClick={setRatingValue} value={ratingValue}/>
+            <Accordion titleValue={"Accordion"} collapsed={accordionCollapsed} setCollapsed={setAccordionCollapsed} />
+            <ControlledOnOff setSwitch={setSwitch} switcher={switcher}/>
         </div>
     );
 }
-
-type PageTitlePropsType = {
-    title: string
-}
-
-function PageTitle(props: any) {
-    console.log("Rendering PageTitle")
-    return <h1> { props.title }</h1>
-}
-
 
 
 export default App;
